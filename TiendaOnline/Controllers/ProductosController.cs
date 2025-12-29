@@ -97,11 +97,10 @@ namespace TiendaOnline.Controllers
             {
                 if (ImagenFile != null && ImagenFile.Length > 0)
                 {
-                    string rutaCarpeta = Path.Combine(Directory.GetCurrentDirectory(),
-                    "wwwroot/images");
+                    string rutaCarpeta = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+
                     Directory.CreateDirectory(rutaCarpeta);
-                    string nombreArchivo = Guid.NewGuid().ToString() +
-                    Path.GetExtension(ImagenFile.FileName);
+                    string nombreArchivo = Guid.NewGuid().ToString() + Path.GetExtension(ImagenFile.FileName);
                     string rutaCompleta = Path.Combine(rutaCarpeta, nombreArchivo);
                     using (var stream = new FileStream(rutaCompleta, FileMode.Create))
                     {
