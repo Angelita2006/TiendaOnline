@@ -1,0 +1,34 @@
+﻿@model List<TiendaOnline.Models.Producto>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+<h1>Productos</h1 >
+<form asp-action="Index" method="get">
+    <p><input class="form-control prueba" type="text" name="texto" placeholder="Buscar por nombre..." value='@ViewData["Texto"]' /></p>
+    <p><input class="search-button btn btn-secondary prueba" type="submit" value="Buscar" /> <a class="btn btn-secondary prueba" type="submit" asp-action="Index">Limpiar</a></p>
+</form>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+    @foreach (var producto in Model)
+    {
+        <div class="col">
+            <a asp-action="Detalles" asp-route-id="@producto.Id" class="text-decoration-none text-dark">
+                <div class="card h-100">
+                    <img src="@Url.Content("~/images/" + producto.ImagenUrl)" class="card-img-top" style="height:200px; object-fit:cover;" />
+
+                    <div class="card-body">
+                        <h5 class="card-title">@producto.Nombre</h5>
+                        <p class="card-text">
+                            <strong>Precio:</strong> @producto.Precio € <br />
+                            <strong>Existencias:</strong> @producto.Existencias
+                        </p>
+                    </div>
+
+                
+                </div>
+            </a>
+        </div>
+    }
+</div>
