@@ -16,27 +16,27 @@ namespace TiendaOnline.Controllers
 
         public async Task<IActionResult> Index(string texto)
         {
-            var alumnos = await _productoDAO.GetAllProductos();
-            ViewData["totalAlumnos"] = alumnos.Count;
+            var productos = await _productoDAO.GetAllProductos();
+            ViewData["totalProductos"] = productos.Count;
             if (!texto.IsNullOrEmpty())
             {
-                alumnos = await _productoDAO.GetFiltradoPorTexto(texto);
+                productos = await _productoDAO.GetFiltradoPorTexto(texto);
             }
             else
             {
                 texto = "";
             }
             ViewData["Texto"] = texto;
-            ViewData["totalAlumnosFiltrados"] = alumnos.Count;
-            return View(alumnos);
+            ViewData["totalProductosFiltrados"] = productos.Count;
+            return View(productos);
         }
 
         [HttpGet]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Eliminar(int id)
         {
-            var alumno = await _productoDAO.GetProductoById(id);
-            return View(alumno);
+            var producto = await _productoDAO.GetProductoById(id);
+            return View(producto);
         }
 
 
@@ -116,8 +116,8 @@ namespace TiendaOnline.Controllers
 
         public async Task<IActionResult> Detalles(int id)
         {
-            var alumno = await _productoDAO.GetProductoById(id);
-            return View(alumno);
+            var producto = await _productoDAO.GetProductoById(id);
+            return View(producto);
         }
     }
 }
