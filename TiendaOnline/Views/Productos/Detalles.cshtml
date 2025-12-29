@@ -1,0 +1,36 @@
+﻿@model TiendaOnline.Models.Producto
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var nombre = Model.Nombre.ToString();
+    ViewData["Title"] = $"Detalles del producto {nombre}";
+}
+<h2 class="prueba">@ViewData["Title"]</h2>
+<br>
+<h5>Información del producto</h5>
+<br>
+<img src="@Url.Content("~/images/" + @Model.ImagenUrl)" style="heigth: auto; width: 80px;"/>
+<br><br>
+<form class="prueba">
+    <div>
+        <label class="form-label" asp-for="@Model.Nombre">Nombre:</label>
+        <label class="form-label" asp-for="@Model.Nombre">@Model.Nombre</label>
+    </div>
+
+    <div>
+        <label class="form-label" asp-for="@Model.Descripcion">Descripcion:</label>
+        <label class="form-label" asp-for="@Model.Descripcion">@Model.Descripcion</label>
+    </div>
+    
+    <div>
+        <label class="form-label" asp-for="@Model.Precio">Precio:</label>
+        <label class="form-label" asp-for="@Model.Precio">@Model.Precio.ToString()€</label>
+    </div>
+    <div>
+        <label class="form-label" asp-for="@Model.Existencias">Existencias:</label>
+        <label class="form-label" asp-for="@Model.Existencias">@Model.Existencias</label>
+    </div>
+</form>
+<br>
+<a class="btn btn-primary prueba" asp-action="Index">Volver</a>
