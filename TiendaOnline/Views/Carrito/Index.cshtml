@@ -1,0 +1,39 @@
+﻿@model List<TiendaOnline.Models.CarritoItem>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2 class="prueba">Carrito</h2>
+<form asp-action="Index" method="get">
+    <p><input class="form-control prueba" type="text" name="texto" placeholder="Buscar por nombre..." value='@ViewData["Texto"]' /></p>
+    <p><input class="search-button btn btn-secondary prueba" type="submit" value="Buscar"/> <a class="btn btn-secondary prueba" type="submit" asp-action="Index">Limpiar</a></p>
+</form>
+
+
+<a class="btn btn-primary mb-3 prueba" asp-action="Vaciar">Vaciar</a>
+    
+<table class="table prueba">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var elemento in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Detalles" asp-route-id="@elemento.ProductoId">@elemento.Nombre</a>
+                </td>
+                <td>@elemento.Precio</td>
+                <td>@elemento.Cantidad</td>
+                <td><a class="btn btn-primary mb-3 btn-danger" type="submit" name="eliminar" asp-action="Eliminar" asp-route-id="@elemento.ProductoId">Eliminar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p class="prueba">Total: @ViewData["totalProductos"]</p>

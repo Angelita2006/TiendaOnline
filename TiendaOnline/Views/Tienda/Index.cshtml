@@ -24,6 +24,7 @@
                             <strong>Precio:</strong> @producto.Precio € <br />
                             <strong>Existencias:</strong> @producto.Existencias
                         </p>
+                        <a class="btn btn-primary" type="submit" name="agregar" asp-controller="Carrito" asp-action="Agregar" asp-route-id="@producto.Id">Agregar al carrito</a>
                     </div>
 
                 
