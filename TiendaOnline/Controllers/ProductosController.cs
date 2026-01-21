@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using TiendaOnline.Data;
 using TiendaOnline.Models;
 
 namespace TiendaOnline.Controllers
 {
+    [Authorize]
     public class ProductosController : Controller
     {
         private ProductoDAO _productoDAO;

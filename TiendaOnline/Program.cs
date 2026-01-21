@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using TiendaOnline.Data;
+using TiendaOnline.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,26 +13,27 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-// Configuración de sesión
+// Configuraciï¿½n de sesiï¿½n
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(30); // tiempo de vida de la sesión
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // tiempo de vida de la sesiï¿½n
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
 
-//Esta línea ya existe en Program.cs
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+//Esta lï¿½nea ya existe en Program.cs
 var app = builder.Build();
 
-// Habilitar el uso de sesión
+// Habilitar el uso de sesiï¿½n
 app.UseSession();
 
-// Configuración de cultura
+// Configuraciï¿½n de cultura
 var defaultCulture = new CultureInfo("es-ES");
 var localizationOptions = new RequestLocalizationOptions
 {
