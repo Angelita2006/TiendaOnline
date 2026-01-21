@@ -16,7 +16,20 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+// Configuración de sesión
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // tiempo de vida de la sesión
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+//Esta línea ya existe en Program.cs
 var app = builder.Build();
+
+// Habilitar el uso de sesión
+app.UseSession();
 
 // Configuración de cultura
 var defaultCulture = new CultureInfo("es-ES");
