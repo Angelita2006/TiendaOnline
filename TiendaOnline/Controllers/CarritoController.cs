@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Session;
 using System.Diagnostics.Eventing.Reader;
 using TiendaOnline.Data;
@@ -7,11 +8,12 @@ using TiendaOnline.Models;
 
 namespace TiendaOnline.Controllers
 {
+    [Authorize]
     public class CarritoController : Controller
     {
         private ProductoDAO _productoDAO;
         private readonly ISession _session;
-
+        
         public CarritoController(ApplicationDbContext context)
         {
             _productoDAO = new ProductoDAO(context);
