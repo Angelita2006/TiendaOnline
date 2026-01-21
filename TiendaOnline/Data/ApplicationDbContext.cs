@@ -12,6 +12,8 @@ namespace TiendaOnline.Data
         }
         //DbSet<TiendaOnline.Models.Usuario> Usuarios { get; set; }
         public DbSet<TiendaOnline.Models.Producto> Productos { get; set; }
-        
+        public DbSet<TiendaOnline.Models.Pedido> Pedidos { get; set; }
+        //public DbSet<TiendaOnline.Models.Pedido> Pedidos { get; set; }
+
     }
 }

@@ -21,7 +21,7 @@ namespace TiendaOnline.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var elementos = CarritoHelper.ObtenerCarrito(_session);
+            var elementos = await CarritoHelper.ObtenerCarrito(_session);
             return View(elementos);
         }
 
