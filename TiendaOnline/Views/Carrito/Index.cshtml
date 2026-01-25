@@ -31,9 +31,11 @@
                 </td>
                 <td>@elemento.Precio</td>
                 <td>@elemento.Cantidad</td>
-                <td><a class="btn btn-primary mb-3 btn-danger" type="submit" name="eliminar" asp-action="Eliminar" asp-route-id="@elemento.ProductoId">Eliminar</a></td>
+                <td><a class="btn btn-primary mb-3 btn-danger" asp-action="Eliminar" asp-route-id="@elemento.ProductoId">Eliminar</a></td>
             </tr>
         }
     </tbody>
 </table>
 <p class="prueba">Total: @ViewData["totalProductos"]</p>
+
+<a class="btn btn-primary prueba" asp-controller="Carrito" asp-action="FinalizarCompra">Finalizar compra</a>
