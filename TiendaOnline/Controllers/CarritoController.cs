@@ -55,10 +55,10 @@ namespace TiendaOnline.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Eliminar(int productoId)
+        public IActionResult Eliminar(int id)
         {
             var carrito = CarritoHelper.ObtenerCarrito(HttpContext.Session);
-            var item = carrito.FirstOrDefault(i => i.ProductoId == productoId);
+            var item = carrito.FirstOrDefault(i => i.ProductoId == id);
 
             if (item != null)
             {

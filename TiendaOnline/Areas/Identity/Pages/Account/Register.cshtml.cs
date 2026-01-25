@@ -124,7 +124,7 @@ namespace TiendaOnline.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
                     // Asignar rol "Usuario" al nuevo usuario
-                    //await _userManager.AddToRoleAsync(user, "Usuario");
+                    await _userManager.AddToRoleAsync(user, "Usuario");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

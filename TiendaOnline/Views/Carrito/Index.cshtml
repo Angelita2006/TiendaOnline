@@ -10,7 +10,6 @@
     <p><input class="search-button btn btn-secondary prueba" type="submit" value="Buscar"/> <a class="btn btn-secondary prueba" type="submit" asp-action="Index">Limpiar</a></p>
 </form>
 
-
 <a class="btn btn-primary mb-3 prueba" asp-action="Vaciar">Vaciar</a>
     
 <table class="table prueba">
@@ -36,6 +35,13 @@
         }
     </tbody>
 </table>
-<p class="prueba">Total: @ViewData["totalProductos"]</p>
+<p class="prueba">Total: @Model.Sum(p => p.Precio * p.Cantidad)</p>
 
-<a class="btn btn-primary prueba" asp-controller="Carrito" asp-action="FinalizarCompra">Finalizar compra</a>
+<form asp-action="FinalizarCompra" method="post">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-success">
+        Finalizar compra
+    </button>
+</form>
+
+@* <a class="btn btn-primary prueba" asp-controller="Carrito" asp-action="FinalizarCompra">Finalizar compra</a> *@
