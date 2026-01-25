@@ -18,7 +18,7 @@
     @foreach (var linea in Model.LineasPedido)
     {
         <li>
-            Producto ID: @linea.ProductoId |
+            Producto: @linea.Producto.Nombre |
             Cantidad: @linea.Cantidad |
             Precio: @linea.PrecioUnitario €
         </li>

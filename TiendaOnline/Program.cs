@@ -24,31 +24,28 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+        options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-
-//builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
-//        options.SignIn.RequireConfirmedAccount = true)
-//    .AddRoles<IdentityRole>()
-//    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 //Esta l�nea ya existe en Program.cs
 var app = builder.Build();
 
-//using (var scope = app.Services.CreateScope())
-//{
-//    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-//    string[] roles = { "Administrador", "Usuario" };
+    string[] roles = { "Administrador", "Usuario" };
 
-//    foreach (var role in roles)
-//    {
-//        if (!await roleManager.RoleExistsAsync(role))
-//        {
-//            await roleManager.CreateAsync(new IdentityRole(role));
-//        }
-//    }
-//}
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+}
 
 // Habilitar el uso de sesi�n
 app.UseSession();
