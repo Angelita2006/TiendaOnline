@@ -1,0 +1,27 @@
+﻿@model List<TiendaOnline.Models.Pedido>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+<h2>Pedidos de la tienda</h2>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Fecha</th>
+        <th>Total</th>
+        <th>Usuario</th>
+    </tr>
+    @foreach (var pedido in Model)
+    {
+        <tr>
+            <td><a asp-action="Detalles" asp-route-id="@pedido.Id">@pedido.Id</a></td>
+            <td>@pedido.Fecha</td>
+            <td>@pedido.Total €</td>
+            <td>@pedido.Usuario.Email</td>
+        </tr>
+    }
+</table>

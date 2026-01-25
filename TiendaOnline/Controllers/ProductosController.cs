@@ -6,7 +6,7 @@ using TiendaOnline.Models;
 
 namespace TiendaOnline.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class ProductosController : Controller
     {
         private ProductoDAO _productoDAO;

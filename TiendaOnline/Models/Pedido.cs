@@ -11,7 +11,7 @@
         public string UsuarioId { get; set; }
         
         public ApplicationUser Usuario { get; set; }
-        
-        public List<LineaPedido> LineasPedido { get; set; }
+
+        public List<LineaPedido> LineasPedido { get; set; } = new();
     }
 }
