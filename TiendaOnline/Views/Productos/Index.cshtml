@@ -28,7 +28,7 @@
             <tr>
                 <td><img src="@Url.Content("~/images/" + producto.ImagenUrl)" style="heigth: auto; width: 80px;" /></td>
                 <td><a asp-action="Detalles" asp-route-id="@producto.Id">@producto.Nombre</a></td>
-                <td>@producto.Precio.ToString()€</td>
+                <td>@producto.Precio €</td>
                 <td>@producto.Existencias</td>
                 <td><a class="btn btn-primary mb-3" method="get" asp-action="Editar" asp-route-id="@producto.Id">Editar</a></td>
                 <td><a class="btn btn-primary mb-3 btn-danger" type="submit" name="eliminar" asp-action="Eliminar" asp-route-id="@producto.Id">Eliminar</a></td>

@@ -5,10 +5,6 @@
 @{
 }
 <h2 class="prueba">Carrito</h2>
-<form asp-action="Index" method="get">
-    <p><input class="form-control prueba" type="text" name="texto" placeholder="Buscar por nombre..." value='@ViewData["Texto"]' /></p>
-    <p><input class="search-button btn btn-secondary prueba" type="submit" value="Buscar"/> <a class="btn btn-secondary prueba" type="submit" asp-action="Index">Limpiar</a></p>
-</form>
 
 <a class="btn btn-primary mb-3 prueba" asp-action="Vaciar">Vaciar</a>
     
@@ -28,14 +24,14 @@
                 <td>
                     <a asp-action="Detalles" asp-route-id="@elemento.ProductoId">@elemento.Nombre</a>
                 </td>
-                <td>@elemento.Precio</td>
+                <td>@elemento.Precio €</td>
                 <td>@elemento.Cantidad</td>
                 <td><a class="btn btn-primary mb-3 btn-danger" asp-action="Eliminar" asp-route-id="@elemento.ProductoId">Eliminar</a></td>
             </tr>
         }
     </tbody>
 </table>
-<p class="prueba">Total: @Model.Sum(p => p.Precio * p.Cantidad)</p>
+<p class="prueba">Total: @Model.Sum(p => p.Precio * p.Cantidad) €</p>
 
 <form asp-action="FinalizarCompra" method="post">
     @Html.AntiForgeryToken()
@@ -43,5 +39,3 @@
         Finalizar compra
     </button>
 </form>
-
-@* <a class="btn btn-primary prueba" asp-controller="Carrito" asp-action="FinalizarCompra">Finalizar compra</a> *@
