@@ -34,6 +34,7 @@ namespace TiendaOnline.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Crear(Devolucion devolucion)
         {
+            //TODO: No validas si los datos recibidos son correcto
             var usuarioId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             devolucion.UsuarioId = usuarioId;
             devolucion.FechaDevolucion = DateTime.Now;
@@ -42,6 +43,7 @@ namespace TiendaOnline.Controllers
             return RedirectToAction("Index");
         }
 
+        //TODO: No existe un detalles para Usuarios, en este método tienes un fallo de seguridad, cualquier usuario registrao puede ver los detalles de un pedido que no es suyo
         [HttpGet]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Detalles(int id)
