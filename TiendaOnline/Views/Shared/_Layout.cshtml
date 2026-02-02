@@ -35,6 +35,10 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="PedidosAdministrador" asp-action="Index">Ventas</a>
                             </li>
+
+                             <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Devoluciones" asp-action="Index">Devoluciones</a>
+                            </li>
                         }
                         else if (User.IsInRole("Usuario"))
                         {
@@ -48,6 +52,10 @@
 
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Pedidos" asp-action="Index">Pedidos</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="MisDevoluciones" asp-action="Index">Devoluciones</a>
                             </li>
                         }
                     </ul>

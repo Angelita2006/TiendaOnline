@@ -5,7 +5,6 @@
 @{
 
 }
-
 <h2>Mis pedidos</h2>
 
 <table class="table">
@@ -20,6 +19,14 @@
             <td><a asp-action="Detalles" asp-route-id="@pedido.Id">@pedido.Id</a></td>
             <td>@pedido.Fecha</td>
             <td>@pedido.Total €</td>
+            @if (pedido.Devuelto) {
+                <td><span class="badge bg-success">Devuelto</span></td>
+            }
+            else
+            {
+                <td><span class="badge bg-secondary">No devuelto</span></td>
+                <td><a class="btn btn-primary mb-3" method="get" asp-controller="MisDevoluciones" asp-action="Crear" asp-route-pedidoId="@pedido.Id">Solicitar Devolución</a></td>
+            }
         </tr>
     }
 </table>

@@ -10,9 +10,9 @@ namespace TiendaOnline.Data
             : base(options)
         {
         }
-        //DbSet<TiendaOnline.Models.Usuario> Usuarios { get; set; }
         public DbSet<TiendaOnline.Models.Producto> Productos { get; set; }
         public DbSet<TiendaOnline.Models.Pedido> Pedidos { get; set; }
+        public DbSet<TiendaOnline.Models.Devolucion> Devoluciones { get; set; }
 
     }
 }

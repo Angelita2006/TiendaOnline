@@ -1,0 +1,29 @@
+﻿@model List<TiendaOnline.Models.Devolucion>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>Mis devoluciones</h2>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Fecha</th>
+        <th>Motivo</th>
+        <th>Id del pedido</th>
+        <th>Fecha del pedido</th>
+        <th>Total del pedido</th>
+    </tr>
+    @foreach (var devolucion in Model)
+    {
+        <tr>
+            <td>@devolucion.Id</td>
+            <td>@devolucion.FechaDevolucion</td>
+            <td>@devolucion.MotivoDevolucion</td>
+            <td><a asp-controller="Pedidos" asp-action="Detalles" asp-route-id="@devolucion.PedidoId">@devolucion.PedidoId</a></td>
+            <td>@devolucion.Pedido.Fecha</td>
+            <td>@devolucion.Pedido.Total €</td>
+        </tr>
+    }
+</table>

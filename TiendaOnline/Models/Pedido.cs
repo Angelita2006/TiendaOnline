@@ -8,6 +8,8 @@
 
         public decimal Total { get; set; }
 
+        public bool Devuelto { get; set; }
+
         public string UsuarioId { get; set; }
         
         public ApplicationUser Usuario { get; set; }
